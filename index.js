@@ -13,7 +13,6 @@ function JSONFilter(inputTree, options) {
   options = options || {};
   this.globalName = options.globalName || 'JSON_DATA';
 }
-console.log(JSONFilter)
 
 JSONFilter.prototype.extensions = ['json'];
 JSONFilter.prototype.targetExtension = 'js';
