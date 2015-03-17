@@ -11,6 +11,13 @@ npm install --save-dev broccoli-json-global
 ```js
 var jsonGlobal = require('broccoli-json-global');
 
-var tree = broccoli.makeTree('public/data');
-tree = jsonGlobal(tree);
+tree = jsonGlobal('public/data', {
+
+  // The name of your globals object. Default is JSON_DATA.
+  globalName: 'GLOBALS',
+
+  // Whether or not to nest data. Keys will be the file name. Default is false.
+  nestData: true
+
+});
 ```

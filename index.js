@@ -12,10 +12,17 @@ function JSONFilter(inputTree, options) {
   Filter.call(this, inputTree, options);
   options = options || {};
   this.globalName = options.globalName || 'JSON_DATA';
+  this.nestData = options.nestData;
 }
 
 JSONFilter.prototype.extensions = ['json'];
 JSONFilter.prototype.targetExtension = 'js';
-JSONFilter.prototype.processString = function(string) {
-  return 'var ' + this.globalName + ' = ' + string + ';';
+JSONFilter.prototype.processString = function(string, relativePath) {
+  var varName = 'window.' + this.globalName;
+  var initializer = '';
+  if (this.nestData) {
+    initializer = varName + ' = ' + varName + ' || {}; ';
+    varName += '[\'' + relativePath.replace(/.json$/, '') + '\']';
+  }
+  return initializer + varName + ' = ' + string + ';';
 }

@@ -1,6 +1,6 @@
 {
   "name": "broccoli-json-global",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Takes a JSON tree and converts it to a .js file that exposes it globally.",
   "main": "index.js",
   "scripts": {
